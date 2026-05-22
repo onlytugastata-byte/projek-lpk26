@@ -3,16 +3,34 @@ import streamlit as st
 st.title("🎈 Project Kelas D 2026")
 import streamlit as st
 
-st.markdown("*Streamlit* is **really** ***cool***.")
-st.markdown('''
-    :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
-    :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.''')
-st.markdown("Here's a bouquet &mdash;\
-            :tulip::cherry_blossom::rose::hibiscus::sunflower::blossom:")
+st.title("🧮 Kalkulator Sederhana")
 
-multi = '''If you end a line with two spaces,
-a soft return is used for the next line.
+st.write("Masukkan dua angka, lalu pilih operasi hitung.")
 
-Two (or more) newline characters in a row will result in a hard return.
-'''
-st.markdown(multi)
+angka1 = st.number_input("Masukkan angka pertama")
+angka2 = st.number_input("Masukkan angka kedua")
+
+operasi = st.selectbox(
+    "Pilih operasi",
+    ["Tambah", "Kurang", "Kali", "Bagi"]
+)
+
+if st.button("Hitung"):
+    if operasi == "Tambah":
+        hasil = angka1 + angka2
+        st.success(f"Hasil: {angka1} + {angka2} = {hasil}")
+
+    elif operasi == "Kurang":
+        hasil = angka1 - angka2
+        st.success(f"Hasil: {angka1} - {angka2} = {hasil}")
+
+    elif operasi == "Kali":
+        hasil = angka1 * angka2
+        st.success(f"Hasil: {angka1} × {angka2} = {hasil}")
+
+    elif operasi == "Bagi":
+        if angka2 == 0:
+            st.error("Tidak bisa dibagi dengan 0")
+        else:
+            hasil = angka1 / angka2
+            st.success(f"Hasil: {angka1} ÷ {angka2} = {hasil}")
